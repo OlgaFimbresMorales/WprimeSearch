@@ -12,9 +12,9 @@ LIMIT_EDGE=${9:-1350.0}
 FIRSTBIN_LEFTEDGE=${10:-60.0}
 FIRSTBIN_RIGHTEDGE=${11:-70.0}
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-export SCRAM_ARCH=slc7_amd64_gcc900
-scram project CMSSW CMSSW_12_2_1
-cd CMSSW_12_2_1/src
+export SCRAM_ARCH=el9_amd64_gcc12
+scram project CMSSW CMSSW_13_3_0_pre4
+cd CMSSW_13_3_0_pre4/src
 eval `scram runtime -sh`
 echo  "CMSSW Dir: "$CMSSW_BASE
 git clone --branch $BRANCHNAME https://github.com/vargasa/WprimeSearch.git Wprime_$YEARP
@@ -24,7 +24,7 @@ echo "Analysis Dir: "$WprimeDir
 #sed -i 's/cmsxrootd.fnal.gov/xrootd.unl.edu/' $WprimeDir/proof/Selector.C
 #sed -i 's/cmsxrootd.fnal.gov/cms-xrd-global.cern.ch/' $WprimeDir/proof/Selector.C
 cd $WprimeDir/proof
-wget -c https://avargash.web.cern.ch/avargash/WprimeSearch/x509up_u114404
+wget -c https://cernbox.cern.ch/files/spaces/eos/user/o/olfimbre/x509up_u114404 #https://avargash.web.cern.ch/avargash/WprimeSearch/x509up_u114404
 export X509_USER_PROXY=$PWD/x509up_u114404
 voms-proxy-info -all
 voms-proxy-info -all -file $X509_USER_PROXY
@@ -50,5 +50,5 @@ root -l -b -q "Selector.C("$ROOTCommand")";
 cd $WprimeDir/proof/
 for i in `ls WprimeHistos_*.root`;
 do
-    xrdcp -vf $i root://cmseos.fnal.gov//store/user/avargash/WprimeSearchCondorOutput/$i
+    xrdcp -vf $i root://eoscms.cern.ch//store/user/olfimbre/WprimeSearchCondorOutput/$i #//cmseos.fnal.gov//store/user/avargash/WprimeSearchCondorOutput/$i
 done

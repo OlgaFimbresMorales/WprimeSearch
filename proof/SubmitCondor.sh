@@ -6,7 +6,7 @@ TYPEP=$3
 SAMPLEFILENAME=$4
 NCORES=1
 MEMORY=1024
-NSPLIT=10
+NSPLIT=2
 SPACING_FACTOR=${5:-1.15}
 LIMIT_EDGE=${6:-1350.0}
 NFSTART=${7:0}
@@ -33,9 +33,9 @@ Error = WprimeHistos_"$OutputLabel".root___\$(Cluster).stderr
 Log = WprimeHistos_"$OutputLabel".root___\$(Cluster).log
 Arguments = $BRANCHNAME $YEARP $TYPEP $SAMPLEFILENAME $OutputLabel $NFSTART $NFEND $SPACING_FACTOR $LIMIT_EDGE
 Queue 1"
-    echo "$jdlString" > /tmp/condor_job_$OutputLabel.jdl
-    echo /tmp/condor_job_$OutputLabel.jdl
-    condor_submit /tmp/condor_job_$OutputLabel.jdl
+    echo "$jdlString" > $PWD/condor_job_$OutputLabel.jdl #/tmp/condor_job_$OutputLabel.jdl
+    echo $PWD/condor_job_$OutputLabel.jdl #/tmp/condor_job_$OutputLabel.jdl
+    condor_submit $PWD/condor_job_$OutputLabel.jdl #/tmp/condor_job_$OutputLabel.jdl
 }
 
 SplitAndSubmit () {

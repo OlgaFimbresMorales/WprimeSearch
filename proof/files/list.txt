@@ -1,0 +1,6 @@
+/eos/cms/store/mc/RunIIAutumn18NanoAODv6/WprimeToWZToWlepZlep_narrow_M1000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano25Oct
+2019_102X_upgrade2018_realistic_v20-v1/100000/57A4632B-00AF-8648-9CC1-ED96611CC958.root
+/eos/cms/store/mc/RunIIAutumn18NanoAODv6/WprimeToWZToWlepZlep_narrow_M1000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano25Oct
+2019_102X_upgrade2018_realistic_v20-v1/110000/2D52998F-3CA6-BB4C-AF62-CAAC6830AF09.root
+/eos/cms/store/mc/RunIIAutumn18NanoAODv6/WprimeToWZToWlepZlep_narrow_M1000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano25Oct
+2019_102X_upgrade2018_realistic_v20-v1/120000/5EC07DB0-643F-7641-9D10-F1ABAC6FEF8D.root

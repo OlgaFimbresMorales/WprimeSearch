@@ -632,4 +632,4 @@ xrdcp -v root://cmsxrootd.fnal.gov//store/data/Run2018D/SingleMuon/MINIAOD/12Nov
 * [8 TeV Search - EXO-12-025](http://cms.cern.ch/iCMS/analysisadmin/cadilines?line=EXO-12-025)
 * [8 TeV Search paper](https://arxiv.org/pdf/1407.3476.pdf)
 * [7 TeV Search - EXO-11-041](http://cms.cern.ch/iCMS/analysisadmin/cadilines?line=EXO-11-041)
-* [7 TeV Search paper](https://arxiv.org/pdf/1206.0433.pdf)
+* [7 TeV Search paper](https://arxiv.org/pdf/1206.0433.pdf)# WprimeSearch

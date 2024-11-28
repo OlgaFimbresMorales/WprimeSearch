@@ -9,7 +9,8 @@
 
 #define FillS(xx) Fill(xx,1.)
 
-std::pair<int,std::unique_ptr<double[]>> PreSelector::generateBins(const float spacingFactor, const double firstBin, const double secondBin, double limitEdge = 1350.0f){
+std::pair<int,std::unique_ptr<double[]>> PreSelector::generateBins(const float spacingFactor, const double firstBin, const double secondBin){
+//std::pair<int,std::unique_ptr<double[]>> PreSelector::generateBins(const float spacingFactor, const double firstBin, const double secondBin, double limitEdge = 1350.0f){
 
     const double lastBinEdge = 5000.0f;
     const double overflowBinEdge = 7500.0f;
@@ -22,7 +23,8 @@ std::pair<int,std::unique_ptr<double[]>> PreSelector::generateBins(const float s
     bins.reserve(reserveSize);
     bins.push_back(leftEdge);
 
-    while(rightEdge < limitEdge){
+    //while(rightEdge < limitEdge){
+    while(rightEdge < 1350.0){
         bins.push_back(rightEdge);
         double newRightEdge = rightEdge + (rightEdge - leftEdge)*spacingFactor;
         leftEdge = rightEdge;
@@ -638,8 +640,8 @@ void PreSelector::SlaveBegin(TTree *tree) {
   InitHVec<TH2F>(HSFs,"HSFs",45,0.,45.,60,0.,6.);
 #endif
 
-  std::pair<int,std::unique_ptr<double[]>> binsArrayPair = generateBins(SPACING_FACTOR,FIRSTBIN_LEFTEDGE,FIRSTBIN_RIGHTEDGE,LIMIT_EDGE);
-
+  std::pair<int,std::unique_ptr<double[]>> binsArrayPair = generateBins(SPACING_FACTOR,FIRSTBIN_LEFTEDGE,FIRSTBIN_RIGHTEDGE);
+  //std::pair<int,std::unique_ptr<double[]>> binsArrayPair = generateBins(SPACING_FACTOR,FIRSTBIN_LEFTEDGE,FIRSTBIN_RIGHTEDGE,LIMIT_EDGE);
   InitHVec<TH1F>(HMassWZ,"HMassWZ",binsArrayPair.first-1,binsArrayPair.second.get());
 
 

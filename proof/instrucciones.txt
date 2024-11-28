@@ -1,0 +1,116 @@
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+cmsrel CMSSW_10_6_8_patch1
+cd CMSSW_10_6_8_patch1/src
+cmsenv
+eval `scram runtime -sh`
+
+root -l -b
+TProof *p1 = TProof::Open("","workers=1");
+p1->SetParameter("Year","2018");
+p1->SetParameter("IsData","false");
+p1->SetParameter("IsUL","true");
+p1->SetParameter("FileNameOut","wprime_mc.root");
+TChain* fChain = new TChain("Events");
+fChain->AddFile("/eos/cms/store/mc/RunIIAutumn18NanoAODv6/WprimeToWZToWlepZlep_narrow_M1000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano25Oct2019_102X_upgrade2018_realistic_v20-v1/100000/57A4632B-00AF-8648-9CC1-ED96611CC958.root")
+fChain->SetProof();
+fChain->Process("PreSelector.C+g");
+
+
+ ./SubmitCondor.sh Events 2018 DATA ULEGamma.txt 1 1 0 10
+
+./SubmitCondor.sh Events 2018 DATA WprimeToWZToWlepZlep_narrow_M1600_TuneCP5_13TeV-madgraph-pythia8.txt 1 1 0 10
+
+fChain->AddFileInfoList(TFileInfo::CreateListMatching ("/eos/cms/store/mc/RunIIAutumn18NanoAODv6/WprimeToWZToWlepZlep_narrow_M1000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano25Oct2019_102X_upgrade2018_realistic_v20-v1/100000/*.root"))
+
+
+
+TFile *f = new TFile("/eos/cms/store/data/Run2018C/SingleMuon/NANOAOD/UL2018_MiniAODv2_JMENanoAODv9-v1/100000/03E65118-6B67-6C4E-B906-FFAAFFE2AD07.root")
+TTree *t = (TTree*)f->Get("Events")
+t->Print()
+
+.>ttree_data.txt
+
+
+TFile *f = new TFile("myfile.root"); 
+TTree *t = (TTree*)f->Get("OutputTree");
+TCanvas *c = new TCanvas("c","c",1);
+t->Draw("mydata");
+c->SaveAs("c.pdf");
+
+
+TFile *f = new TFile("wprime_mc.root")
+TH1F *newh = new TH1F("HMetPt_SR1_A_NoSF","HMetPt_SR1_A",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMetPt_SR1_A_NoSF") 
+TCanvas *c = new TCanvas()
+newh->SetFillColor(2)
+newh->GetXaxis()->SetRangeUser(0.0,600.0)
+newh->GetXaxis()->SetTitle("eje X")
+newh->GetYaxis()->SetTitle("Events") 
+newh->Draw("ALP")
+c->SaveAs("metpt_A.pdf")
+
+TH1F *newh = new TH1F("HMetPt_SR1_B_NoSF","HMetPt_SR1_B",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMetPt_SR1_B_NoSF")
+newh->GetXaxis()->SetRangeUser(0.0,600.0)
+newh->Draw("ALP")
+c->SaveAs("metpt_B.pdf")
+
+TH1F *newh = new TH1F("HMetPt_SR1_C_NoSF","HMetPt_SR1_C",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMetPt_SR1_C_NoSF")
+newh->GetXaxis()->SetRangeUser(0.0,1200.0)
+newh->Draw("ALP")
+c->SaveAs("metpt_C.pdf")
+
+TH1F *newh = new TH1F("HMetPt_SR1_C_NoSF","HMetPt_SR1_D",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMetPt_SR1_D_NoSF")
+newh->GetXaxis()->SetRangeUser(0.0,800.0)
+newh->Draw("ALP")
+c->SaveAs("metpt_D.pdf")
+
+TH1F *newh = new TH1F("HMassWZ_SR1_A_NoSF","HMassWZ_SR1_A_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassWZ_SR1_A_NoSF") 
+newh->GetXaxis()->SetRangeUser(0.0,1500.0)
+newh->Draw("ALP")
+c->SaveAs("masszw_A.pdf")
+
+TH1F *newh = new TH1F("HMassWZ_SR1_B_NoSF","HMassWZ_SR1_B_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassWZ_SR1_B_NoSF")
+newh->GetXaxis()->SetRangeUser(0.0,5000.0)
+newh->Draw("ALP")
+c->SaveAs("masszw_B.pdf")
+
+TH1F *newh = new TH1F("HMassWZ_SR1_C_NoSF","HMassWZ_SR1_C_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassWZ_SR1_C_NoSF")
+newh->GetXaxis()->SetRangeUser(0.0,5000.0)
+newh->Draw("ALP")
+c->SaveAs("masszw_C.pdf")
+
+TH1F *newh = new TH1F("HMassWZ_SR1_D_NoSF","HMassWZ_SR1_D_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassWZ_SR1_D_NoSF")
+newh->GetXaxis()->SetRangeUser(0.0,5000.0)
+newh->Draw("ALP")
+c->SaveAs("masszw_D.pdf")
+
+TH1F *newh = new TH1F("HMassZ_SR1_A_NoSF","HMassZ_SR1_A_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassZ_SR1_A_NoSF") 
+newh->GetXaxis()->SetRangeUser(70.0,115.0)
+newh->Draw("ALP")
+c->SaveAs("massz_A.pdf")
+
+TH1F *newh = new TH1F("HMassZ_SR1_B_NoSF","HMassZ_SR1_B_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassZ_SR1_B_NoSF")
+newh->GetXaxis()->SetRangeUser(70.0,115.0)
+newh->Draw("ALP")
+c->SaveAs("massz_B.pdf")
+
+TH1F *newh = new TH1F("HMassZ_SR1_C_NoSF","HMassZ_SR1_C_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassZ_SR1_C_NoSF")
+newh->GetXaxis()->SetRangeUser(70.0,115.0)
+newh->Draw("ALP")
+c->SaveAs("massz_C.pdf")
+
+TH1F *newh = new TH1F("HMassZ_SR1_D_NoSF","HMassZ_SR1_D_NoSF",12,0.0,600.0)
+newh = (TH1F*)f->Get("2018/HMassZ_SR1_D_NoSF")
+newh->GetXaxis()->SetRangeUser(70.0,115.0)
+newh->Draw("ALP")
+c->SaveAs("massz_D.pdf")

@@ -22,17 +22,17 @@ class EventSelection : public TSelector{
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_Photon175;
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_Mu50;
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_TkMu50;
-  TTreeReaderValue<Bool_t> Flag_globalSuperTightHalo2016Filter = {fReader, MakeBranchList("Flag_globalSuperTightHalo2016Filter")};
-  TTreeReaderValue<Bool_t> Flag_hcalLaserEventFilter = {fReader, MakeBranchList("Flag_hcalLaserEventFilter")};
-  TTreeReaderValue<Bool_t> Flag_EcalDeadCellTriggerPrimitiveFilter = {fReader, MakeBranchList("Flag_EcalDeadCellTriggerPrimitiveFilter")};
-  TTreeReaderValue<Bool_t> Flag_BadPFMuonFilter = {fReader, MakeBranchList("Flag_BadPFMuonFilter")};
-  TTreeReaderValue<Bool_t> Flag_BadPFMuonSummer16Filter = {fReader, MakeBranchList("Flag_BadPFMuonSummer16Filter")};
-  TTreeReaderValue<Bool_t> Flag_HBHENoiseFilter = {fReader, MakeBranchList("Flag_HBHENoiseFilter")};
-  TTreeReaderValue<Bool_t> Flag_HBHENoiseIsoFilter = {fReader, MakeBranchList("Flag_HBHENoiseIsoFilter")};
-  TTreeReaderValue<Bool_t> Flag_goodVertices = {fReader, MakeBranchList("Flag_goodVertices")};
-  TTreeReaderValue<Bool_t> Flag_eeBadScFilter = {fReader, MakeBranchList("Flag_eeBadScFilter")};
-  TTreeReaderValue<Bool_t> Flag_hfNoisyHitsFilter = {fReader, MakeBranchList("Flag_hfNoisyHitsFilter")};
-  TTreeReaderValue<Bool_t> Flag_BadPFMuonDzFilter = {fReader, MakeBranchList("Flag_BadPFMuonDzFilter")};
+  TTreeReaderValue<Bool_t> Flag_globalSuperTightHalo2016Filter = {fReader, MakeBranchList("Flag_globalSuperTightHalo2016Filter")};//o
+  TTreeReaderValue<Bool_t> Flag_hcalLaserEventFilter = {fReader, MakeBranchList("Flag_hcalLaserEventFilter")};//o solo se aplica en 2016
+  TTreeReaderValue<Bool_t> Flag_EcalDeadCellTriggerPrimitiveFilter = {fReader, MakeBranchList("Flag_EcalDeadCellTriggerPrimitiveFilter")};//o
+  TTreeReaderValue<Bool_t> Flag_BadPFMuonFilter = {fReader, MakeBranchList("Flag_BadPFMuonFilter")};//o
+  TTreeReaderValue<Bool_t> Flag_BadPFMuonSummer16Filter = {fReader, MakeBranchList("Flag_BadPFMuonSummer16Filter")};//o solo se aplica en 2016
+  TTreeReaderValue<Bool_t> Flag_HBHENoiseFilter = {fReader, MakeBranchList("Flag_HBHENoiseFilter")};//o en data tiene una etiqueta extra "_pRECO"
+  TTreeReaderValue<Bool_t> Flag_HBHENoiseIsoFilter = {fReader, MakeBranchList("Flag_HBHENoiseIsoFilter")};//o en data tiene una etiqueta extra "_pRECO"
+  TTreeReaderValue<Bool_t> Flag_goodVertices = {fReader, MakeBranchList("Flag_goodVertices")};//o en data tiene una etiqueta extra "_pRECO"
+  TTreeReaderValue<Bool_t> Flag_eeBadScFilter = {fReader, MakeBranchList("Flag_eeBadScFilter")};//o en data tiene una etiqueta extra "_pRECO"
+  //TTreeReaderValue<Bool_t> Flag_hfNoisyHitsFilter = {fReader, MakeBranchList("Flag_hfNoisyHitsFilter")};//x en mc
+  //TTreeReaderValue<Bool_t> Flag_BadPFMuonDzFilter = {fReader, MakeBranchList("Flag_BadPFMuonDzFilter")};//x en mc
 #elif defined(Y2017)
   // 2017 HLTs && Flags
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_Mu50;
@@ -40,20 +40,20 @@ class EventSelection : public TSelector{
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_TkMu100;
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_Ele35_WPTight_Gsf;
   std::unique_ptr<TTreeReaderValue<Bool_t>> HLT_Photon200;
-  TTreeReaderValue<Bool_t> Flag_goodVertices = {fReader, MakeBranchList("Flag_goodVertices")};
-  TTreeReaderValue<Bool_t> Flag_globalSuperTightHalo2016Filter = {fReader, MakeBranchList("Flag_globalSuperTightHalo2016Filter")};
-  TTreeReaderValue<Bool_t> Flag_HBHENoiseFilter = {fReader, MakeBranchList("Flag_HBHENoiseFilter")};
+  TTreeReaderValue<Bool_t> Flag_goodVertices = {fReader, MakeBranchList("Flag_goodVertices")};//o
+  TTreeReaderValue<Bool_t> Flag_globalSuperTightHalo2016Filter = {fReader, MakeBranchList("Flag_globalSuperTightHalo2016Filter")};//o
+  TTreeReaderValue<Bool_t> Flag_HBHENoiseFilter = {fReader, MakeBranchList("Flag_HBHENoiseFilter")};//o
   TTreeReaderValue<Bool_t> Flag_HBHENoiseIsoFilter = {fReader, MakeBranchList("Flag_HBHENoiseIsoFilter")};
   TTreeReaderValue<Bool_t> Flag_EcalDeadCellTriggerPrimitiveFilter = {fReader, MakeBranchList("Flag_EcalDeadCellTriggerPrimitiveFilter")};
   TTreeReaderValue<Bool_t> Flag_BadPFMuonFilter = {fReader, MakeBranchList("Flag_BadPFMuonFilter")};
   TTreeReaderValue<Bool_t> Flag_BadChargedCandidateFilter = {fReader, MakeBranchList("Flag_BadChargedCandidateFilter")};
   TTreeReaderValue<Bool_t> Flag_eeBadScFilter = {fReader, MakeBranchList("Flag_eeBadScFilter")};
-  TTreeReaderValue<Bool_t> Flag_hfNoisyHitsFilter = {fReader, MakeBranchList("Flag_hfNoisyHitsFilter")};
-  TTreeReaderValue<Bool_t> Flag_BadPFMuonDzFilter = {fReader, MakeBranchList("Flag_BadPFMuonDzFilter")};
+ // TTreeReaderValue<Bool_t> Flag_hfNoisyHitsFilter = {fReader, MakeBranchList("Flag_hfNoisyHitsFilter")};
+  //TTreeReaderValue<Bool_t> Flag_BadPFMuonDzFilter = {fReader, MakeBranchList("Flag_BadPFMuonDzFilter")};
 #if defined(ULSAMPLE)
-  TTreeReaderValue<Bool_t> Flag_ecalBadCalibFilter = {fReader, MakeBranchList("Flag_ecalBadCalibFilter")};
+  TTreeReaderValue<Bool_t> Flag_ecalBadCalibFilter = {fReader, MakeBranchList("Flag_ecalBadCalibFilter")}; //2017 y 2018 //o en data tiene una etiqueta extra "_pRECO"
 #else
-  TTreeReaderValue<Bool_t> Flag_ecalBadCalibFilter = {fReader, MakeBranchList("Flag_ecalBadCalibFilterV2")};
+  TTreeReaderValue<Bool_t> Flag_ecalBadCalibFilter = {fReader, MakeBranchList("Flag_ecalBadCalibFilterV2")}; //2017 y 2018 //o mc
 #endif
 #elif defined(Y2018)
   // 2018 HLTs && Flags
@@ -70,8 +70,8 @@ class EventSelection : public TSelector{
   TTreeReaderValue<Bool_t> Flag_BadPFMuonFilter = {fReader, MakeBranchList("Flag_BadPFMuonFilter")};
   TTreeReaderValue<Bool_t> Flag_BadChargedCandidateFilter = {fReader, MakeBranchList("Flag_BadChargedCandidateFilter")};
   TTreeReaderValue<Bool_t> Flag_eeBadScFilter = {fReader, MakeBranchList("Flag_eeBadScFilter")};
-  TTreeReaderValue<Bool_t> Flag_hfNoisyHitsFilter = {fReader, MakeBranchList("Flag_hfNoisyHitsFilter")};
-  TTreeReaderValue<Bool_t> Flag_BadPFMuonDzFilter = {fReader, MakeBranchList("Flag_BadPFMuonDzFilter")};
+  //TTreeReaderValue<Bool_t> Flag_hfNoisyHitsFilter = {fReader, MakeBranchList("Flag_hfNoisyHitsFilter")};
+  //TTreeReaderValue<Bool_t> Flag_BadPFMuonDzFilter = {fReader, MakeBranchList("Flag_BadPFMuonDzFilter")};
 #if defined(ULSAMPLE)
   TTreeReaderValue<Bool_t> Flag_ecalBadCalibFilter = {fReader, MakeBranchList("Flag_ecalBadCalibFilter")};
 #else
@@ -262,7 +262,7 @@ Bool_t EventSelection::ReadEntry(const Long64_t& entry){
     and *Flag_HBHENoiseFilter and *Flag_HBHENoiseIsoFilter
     and *Flag_EcalDeadCellTriggerPrimitiveFilter
     and *Flag_BadPFMuonFilter and *Flag_eeBadScFilter
-    and *Flag_hfNoisyHitsFilter and *Flag_BadPFMuonDzFilter
+   // and *Flag_hfNoisyHitsFilter and *Flag_BadPFMuonDzFilter
     and *PV_npvsGood > 0;
 #elif defined(Y2017)
   ElectronHLTs = DefineHLT(HLT_Ele35_WPTight_Gsf) or
@@ -273,7 +273,7 @@ Bool_t EventSelection::ReadEntry(const Long64_t& entry){
     and *Flag_HBHENoiseFilter and *Flag_HBHENoiseIsoFilter
     and *Flag_EcalDeadCellTriggerPrimitiveFilter
     and *Flag_BadPFMuonFilter and *Flag_ecalBadCalibFilter
-    and *Flag_eeBadScFilter and *Flag_hfNoisyHitsFilter
+    and *Flag_eeBadScFilter //and *Flag_hfNoisyHitsFilter
     and *Flag_BadPFMuonDzFilter
     and *PV_npvsGood > 0;
 #elif defined(Y2018)
@@ -282,8 +282,8 @@ Bool_t EventSelection::ReadEntry(const Long64_t& entry){
   Flags = *Flag_goodVertices and *Flag_globalSuperTightHalo2016Filter
     and *Flag_HBHENoiseFilter and *Flag_HBHENoiseIsoFilter
     and *Flag_EcalDeadCellTriggerPrimitiveFilter and *Flag_BadPFMuonFilter
-    and *Flag_ecalBadCalibFilter and *Flag_BadPFMuonDzFilter
-    and *Flag_eeBadScFilter and *Flag_hfNoisyHitsFilter
+    and *Flag_ecalBadCalibFilter //and *Flag_BadPFMuonDzFilter
+    and *Flag_eeBadScFilter //and *Flag_hfNoisyHitsFilter
     and *PV_npvsGood > 0;
 #endif
 
