@@ -2042,7 +2042,7 @@ Float_t PreSelector::GetSFFromHisto(TH1* h, const Int_t& npv, const int option =
 Double_t PreSelector::GetElTriggerSF(const Float_t& eta, const Float_t& pt,
                                    const Int_t& option) const{
 
-  assert(abs(eta)<2.5);
+  assert(abs(eta)<2.5);////////////////////Corte en eta < 2.5 ?????
 
   Double_t sf = -1;
 
