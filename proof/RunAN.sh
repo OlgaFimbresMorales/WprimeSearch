@@ -18,7 +18,7 @@ cd CMSSW_13_3_0_pre4/src
 eval `scram runtime -sh`
 echo  "CMSSW Dir: "$CMSSW_BASE
 #git clone --branch $BRANCHNAME https://github.com/OlgaFimbresMorales/WprimeSearch.git Wprime_$YEARP
-git clone https://github.com/OlgaFimbresMorales/WprimeSearch
+git clone https://github.com/OlgaFimbresMorales/WprimeSearch.git Wprime_$YEARP
 WprimeDir=$PWD/Wprime_$YEARP/
 echo "Analysis Dir: "$WprimeDir
 #sed -i 's/cmsxrootd.fnal.gov/xrootd-cms.infn.it/' $WprimeDir/proof/Selector.C
