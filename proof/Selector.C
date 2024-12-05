@@ -201,11 +201,11 @@ Int_t Selector(std::string outputLabel, std::string files = "", Int_t fWorkers =
         //line = Form("root://cms-xrd-global.cern.ch/%s",line.c_str());
         std::cout << "Chaining [" << counter << ":" << fChain->GetNtrees() << "]\t" << line << "\t";
         int ans = fChain->AddFile(line.c_str());
-        //if(ans == 1){
-        //  std::cout << "[Ok]\n";
+        if(ans == 1){
+          std::cout << "\n";
         //} else {
         //  std::cout << "[Error]\n";
-       // }
+        }
       }
       ++counter;
     }
