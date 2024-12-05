@@ -202,7 +202,7 @@ Int_t Selector(std::string outputLabel, std::string files = "", Int_t fWorkers =
         std::cout << "Chaining [" << counter << ":" << fChain->GetNtrees() << "]\t" << line << "\t";
         int ans = fChain->AddFile(line.c_str());
         if(ans == 1){
-          std::cout << "[Ok]\n";
+          std::cout << "";//"[Ok]\n";
         } else {
           std::cout << "[Error]\n";
         }
