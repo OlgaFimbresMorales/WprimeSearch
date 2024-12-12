@@ -30,7 +30,8 @@ sed -i 's/eoscms.cern.ch/cmsxrootd.fnal.gov/' $WprimeDir/proof/Selector.C
 cd $WprimeDir/proof 
 echo $PWD
 #wget -c https://cernbox.cern.ch/files/spaces/eos/user/o/olfimbre/x509up_u154847
-wget -c https://github.com/OlgaFimbresMorales/WprimeSearch/raw/refs/heads/master/proof/x509up_u154847
+#wget -c https://github.com/OlgaFimbresMorales/WprimeSearch/raw/refs/heads/master/proof/x509up_u154847
+wget -c https://raw.githubusercontent.com/OlgaFimbresMorales/WprimeSearch/refs/heads/master/proof/x509up_u154847
 export X509_USER_PROXY=/uscms/home/omorales/x509up_u154847
 voms-proxy-info -all
 voms-proxy-info -all -file $X509_USER_PROXY
