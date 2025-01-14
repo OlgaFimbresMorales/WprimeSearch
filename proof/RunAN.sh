@@ -52,5 +52,5 @@ root -l -b -q "Selector.C("$ROOTCommand")";
 cd $WprimeDir/proof/
 for i in `ls WprimeHistos_*.root`;
 do
-    xrdcp -vf $i root://eoscms.cern.ch//store/user/olfimbre/WprimeSearchCondorOutput/$i #//cmseos.fnal.gov//store/user/avargash/WprimeSearchCondorOutput/$i
+    xrdcp -vf $i root://cmseos.fnal.gov//store/user/omorales/WprimeSearchCondorOutput/$i #root://eoscms.cern.ch//store/user/olfimbre/WprimeSearchCondorOutput/$i #//cmseos.fnal.gov//store/user/avargash/WprimeSearchCondorOutput/$i
 done
