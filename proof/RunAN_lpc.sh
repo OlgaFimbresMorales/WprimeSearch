@@ -19,22 +19,23 @@ echo $PWD
 cmsenv
 eval `scram runtime -sh`
 echo  "CMSSW Dir: "$CMSSW_BASE
+git clone https://github.com/vargasa/WprimeSearch  Wprime_$YEARP
 #git clone --branch $BRANCHNAME https://github.com/OlgaFimbresMorales/WprimeSearch.git Wprime_$YEARP
-git clone https://github.com/OlgaFimbresMorales/WprimeSearch.git Wprime_$YEARP
+#git clone https://github.com/castaned/WprimeSearch.git Wprime_$YEARP
+#git clone https://github.com/castaned/WprimeSearch  Wprime_$YEARP
 WprimeDir=$PWD/Wprime_$YEARP/
 echo "Analysis Dir: "$WprimeDir
-sed -i 's/eoscms.cern.ch/cmsxrootd.fnal.gov/' $WprimeDir/proof/Selector.C
 #sed -i 's/cmsxrootd.fnal.gov/xrootd-cms.infn.it/' $WprimeDir/proof/Selector.C
 #sed -i 's/cmsxrootd.fnal.gov/xrootd.unl.edu/' $WprimeDir/proof/Selector.C
-#sed -i 's/cmsxrootd.fnal.gov/cms-xrd-global.cern.ch/' $WprimeDir/proof/Selector.C
-cd $WprimeDir/proof 
+sed -i 's/cmsxrootd.fnal.gov/cms-xrd-global.cern.ch/' $WprimeDir/proof/Selector.C
+cd $WprimeDir/proof
 echo $PWD
-#wget -c https://cernbox.cern.ch/files/spaces/eos/user/o/olfimbre/x509up_u154847
-#wget -c https://github.com/OlgaFimbresMorales/WprimeSearch/raw/refs/heads/master/proof/x509up_u154847
-wget -c https://raw.githubusercontent.com/OlgaFimbresMorales/WprimeSearch/refs/heads/master/proof/x509up_u154847
-export X509_USER_PROXY=/uscms/home/omorales/x509up_u154847
+wget -c https://raw.githubusercontent.com/castaned/files/refs/heads/main/x509up_u47450
+#voms-proxy-init --voms cms
+export X509_USER_PROXY=$PWD/x509up_u47450
 voms-proxy-info -all
 voms-proxy-info -all -file $X509_USER_PROXY
+
 
 cd $WprimeDir/proof/
 echo $PWD
@@ -51,14 +52,14 @@ elif [ "$TYPEP" = "DATA" ]; then
     export ENTRYLISTFILE="root://cmseos.fnal.gov//store/user/avargash/WprimeSearch/proof/EntryListMaker/EntryLists_Unique.root"
     echo -e "#define Y"$YEARP"\n#define CMSDATA\n#define ULSAMPLE\n${BINOPTIONS}" > IsData.h
 fi
-ROOTCommand="\""$OutputLabel"\",\""$SAMPLEFILE"\","$NCORES",\""$ENTRYLISTFILE"\",0,-1";
-#ROOTCommand="\""$OutputLabel"\",\""$SAMPLEFILE"\","$NCORES",\""$ENTRYLISTFILE"\", $NFSTART,$NFEND";
+ROOTCommand="\""$OutputLabel"\",\""$SAMPLEFILE"\","$NCORES",\""$ENTRYLISTFILE"\","$NFSTART","$NFEND"";
 root -l -b -q "Selector.C("$ROOTCommand")";
 
 
+
 cd $WprimeDir/proof/
-echo $PWD
+#echo $PWD
 for i in `ls WprimeHistos_*.root`;
 do
-    xrdcp -vf $i root://cmseos.fnal.gov//store/user/omorales/WprimeSearchCondorOutput/$i #//cmseos.fnal.gov//store/user/avargash/WprimeSearchCondorOutput/$i
+    xrdcp -vf $i root://cmseos.fnal.gov//store/user/omorales/WprimeSearchCondorOutput/$i
 done

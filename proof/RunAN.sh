@@ -15,6 +15,7 @@ source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=el9_amd64_gcc12
 scram project CMSSW CMSSW_13_3_0_pre4
 cd CMSSW_13_3_0_pre4/src
+cmsenv
 eval `scram runtime -sh`
 echo  "CMSSW Dir: "$CMSSW_BASE
 #git clone --branch $BRANCHNAME https://github.com/OlgaFimbresMorales/WprimeSearch.git Wprime_$YEARP

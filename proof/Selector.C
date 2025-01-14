@@ -143,7 +143,7 @@ TList* CreateSFDb(Int_t Year, Bool_t IsUL, TList* SFDb){
 }
 
 Int_t Selector(std::string outputLabel, std::string files = "", Int_t fWorkers = 4,
-               std::string elistfile = "", Int_t nfstart = 0, Int_t nfend = -1){
+               std::string elistfile = "", Int_t nfstart = -0, Int_t nfend = -1){
 
 
   Int_t Year = 0;

@@ -1,0 +1,13 @@
+universe = vanilla
++JobFlavour = "longlunch"
++MaxRuntime = 9000
+Executable = RunAN.sh
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+request_cpus = 1
+request_memory = 1024
+Output = WprimeHistos_master_2018_MC_WprimeToWZToWlepZlep_narrow_M1600_TuneCP5_13TeV-madgraph-pythia8.txt_1.15_1350.0____0000_0002.root___$(Cluster).stdout
+Error = WprimeHistos_master_2018_MC_WprimeToWZToWlepZlep_narrow_M1600_TuneCP5_13TeV-madgraph-pythia8.txt_1.15_1350.0____0000_0002.root___$(Cluster).stderr
+Log = WprimeHistos_master_2018_MC_WprimeToWZToWlepZlep_narrow_M1600_TuneCP5_13TeV-madgraph-pythia8.txt_1.15_1350.0____0000_0002.root___$(Cluster).log
+Arguments = master 2018 MC WprimeToWZToWlepZlep_narrow_M1600_TuneCP5_13TeV-madgraph-pythia8.txt master_2018_MC_WprimeToWZToWlepZlep_narrow_M1600_TuneCP5_13TeV-madgraph-pythia8.txt_1.15_1350.0____0000_0002 0 2 1.15 1350.0
+Queue 1
