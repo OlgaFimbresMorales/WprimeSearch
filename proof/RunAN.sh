@@ -24,7 +24,7 @@ WprimeDir=$PWD/Wprime_$YEARP/
 echo "Analysis Dir: "$WprimeDir
 #sed -i 's/cmsxrootd.fnal.gov/xrootd-cms.infn.it/' $WprimeDir/proof/Selector.C
 #sed -i 's/cmsxrootd.fnal.gov/xrootd.unl.edu/' $WprimeDir/proof/Selector.C
-#sed -i 's/cmsxrootd.fnal.gov/cms-xrd-global.cern.ch/' $WprimeDir/proof/Selector.C
+sed -i 's/cmsxrootd.fnal.gov/cms-xrd-global.cern.ch/' $WprimeDir/proof/Selector.C
 cd $WprimeDir/proof
 wget -c https://cernbox.cern.ch/files/spaces/eos/user/o/olfimbre/x509up_u154847 #https://avargash.web.cern.ch/avargash/WprimeSearch/x509up_u114404
 export X509_USER_PROXY=$PWD/x509up_u154847
