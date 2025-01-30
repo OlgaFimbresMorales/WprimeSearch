@@ -198,7 +198,8 @@ Int_t Selector(std::string outputLabel, std::string files = "", Int_t fWorkers =
           (counter >= nfstart and counter <= nfend)){
           //line = Form("root://eoscms.cern.ch/%s",line.c_str());
           //line = Form("root://cmsxrootd.fnal.gov/%s",line.c_str());
-          line = Form("root://cms-xrd-global.cern.ch/%s",line.c_str());
+          //line = Form("root://cms-xrd-global.cern.ch/%s",line.c_str());
+          line = Form("root://xrootd.unl.edu/%s",line.c_str());
         std::cout << "Chaining [" << counter << ":" << fChain->GetNtrees() << "]\t" << line << "\t";
         int ans = fChain->AddFile(line.c_str());
         if(ans == 1){
